@@ -1,18 +1,18 @@
-import Box from "@mui/material/Box";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
-import TableChartIcon from "@mui/icons-material/TableChart";
-import HomeIcon from "@mui/icons-material/Home";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import TableChartIcon from '@mui/icons-material/TableChart';
+import HomeIcon from '@mui/icons-material/Home';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import { useEffect, useState } from "react";
-import { navigate } from "astro/virtual-modules/transitions-router.js";
+import { useEffect, useState } from 'react';
+import { navigate } from 'astro/virtual-modules/transitions-router.js';
 
 const routeMap: Record<number, string> = {
-  0: "/",
-  1: "/table",
-  2: "/user",
+  0: '/',
+  1: '/table',
+  2: '/user',
 };
 
 function BottomNav() {
@@ -27,7 +27,7 @@ function BottomNav() {
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
     const to = routeMap[newValue];
-    if (to) navigate(to, { history: "push" });
+    if (to) navigate(to, { history: 'push' });
   };
 
   useEffect(() => {
@@ -36,8 +36,8 @@ function BottomNav() {
       const matched = Object.entries(routeMap).find(([k, v]) => v === path);
       if (matched) setValue(Number(matched[0]));
     };
-    window.addEventListener("popstate", onLocationChange);
-    return () => window.removeEventListener("popstate", onLocationChange);
+    window.addEventListener('popstate', onLocationChange);
+    return () => window.removeEventListener('popstate', onLocationChange);
   }, []);
 
   return (
