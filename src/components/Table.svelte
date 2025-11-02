@@ -1,3 +1,7 @@
+<script lang="ts">
+  let name = "svelte";
+</script>
+
 <div class="overflow-x-auto">
   <table class="table">
     <!-- head -->
@@ -8,7 +12,7 @@
             <input type="checkbox" class="checkbox" />
           </label>
         </th>
-        <th>Name</th>
+        <th>Name({name})</th>
         <th>Job</th>
         <th>Favorite Color</th>
         <th></th>
