@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BottomNav from "../components/BottomNav";
 ---
 
 <!doctype html>
@@ -19,6 +20,7 @@ import "../styles/global.css";
   </head>
   <body>
     <slot />
+    <BottomNav client:only="react" />
   </body>
 </html>
 

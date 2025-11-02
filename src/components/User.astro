@@ -1,0 +1,102 @@
+<section class="bg-base-200 flex items-center justify-center min-h-screen">
+  <div
+    x-data="loginForm()"
+    class="card w-full max-w-md bg-base-100 shadow-md p-6"
+  >
+    <h2 class="text-2xl font-semibold text-center mb-4">Login</h2>
+
+    <form @submit.prevent="submit" class="space-y-4">
+      <!-- Email Field -->
+      <div>
+        <label class="label">
+          <span class="label-text">Email</span>
+        </label>
+        <input
+          type="email"
+          x-model="email"
+          required
+          placeholder="you@example.com"
+          class="input input-bordered w-full"
+        />
+      </div>
+
+      <!-- Password Field with Toggle -->
+      <div x-data="{ show: false }" class="relative">
+        <label class="label">
+          <span class="label-text">Password</span>
+        </label>
+        <input
+          :type="show ? 'text' : 'password'"
+          x-model="password"
+          required
+          placeholder="Enter your password"
+          class="input input-bordered w-full pr-10"
+        />
+        <button
+          type="button"
+          @click="show = !show"
+          class="absolute top-1/2 right-2 -translate-y-1/2 btn btn-xs btn-ghost"
+        >
+          <span x-text="show ? 'Hide' : 'Show'"></span>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <label class="cursor-pointer">
+          <input type="checkbox" x-model="remember" class="checkbox mr-2" />
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="text-sm text-primary hover:underline"
+          >Forgot password?</a
+        >
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary w-full">Log In</button>
+      </div>
+
+      <template x-if="errorMessage">
+        <p class="mt-2 text-sm text-red-600" x-text="errorMessage"></p>
+      </template>
+    </form>
+  </div>
+</section>
+
+<script>
+  function loginForm() {
+    return {
+      email: "",
+      password: "",
+      remember: false,
+      errorMessage: "",
+      async submit() {
+        this.errorMessage = "";
+        // Example validation
+        if (!this.email || !this.password) {
+          this.errorMessage = "Email and password are required.";
+          return;
+        }
+        // Simulate login request
+        try {
+          // Replace this with your login API call
+          await new Promise((resolve, reject) => {
+            setTimeout(() => {
+              if (
+                this.email === "user@example.com" &&
+                this.password === "password"
+              ) {
+                resolve("Login successful!");
+              } else {
+                reject(new Error("Invalid credentials"));
+              }
+            }, 1000);
+          });
+          alert("Login successful!");
+          // After success, you might redirect or update state
+        } catch (err: any) {
+          this.errorMessage = err.message;
+        }
+      },
+    };
+  }
+</script>

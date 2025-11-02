@@ -1,11 +1,9 @@
 ---
 import AppList from "./AppList.vue";
-import BottomNav from "./BottomNav";
 ---
 
 <div id="container">
   <main>
-    <AppList client:load />
+    <AppList client:only="vue" />
   </main>
-  <BottomNav client:load />
 </div>

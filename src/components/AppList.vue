@@ -1,7 +1,7 @@
 <template>
   <ul class="list bg-base-100 rounded-box shadow-md">
     <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">
-      Most played songs this week
+      Most played songs this week(Vue)
     </li>
 
     <li class="list-row">
